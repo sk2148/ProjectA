@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        /* Create three equal columns that sits next to each other */
+        .column {
+            flex: 33.33%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Stone Clinic Management System</h2>
+    <h3>DashBoard:</h3>
+    <hr/>
+    <div class="row">
+        <div class="column">
+            <a asp-controller="Doctors" asp-action="Index">
+                <img src="https://cdn3.iconfinder.com/data/icons/medical-services-2-2/256/Doctor-512.png" alt="Doctor" style="width:50%" />
+             Doctor Details</a>   
+        </div>
+        <div class="column">
+            <a asp-controller="Patients" asp-action="Index">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhxZ9H6EFXtbLItAQYxCKRpoAxKx-YShxrBA&amp;usqp=CAU" alt="patient" style="width:50%" />
+             Patient Details </a>                
+        </div>
+        <div class="column">
+            <a asp-controller="Appointments" asp-action="Index">
+                <img src="https://cdn2.iconfinder.com/data/icons/calendars-events/24/check-calendar-512.png" alt="Appointment" style="width:50%" />
+             Appointmnents Details</a>
+        </div>
+    </div>
+
+</body>
+</html>

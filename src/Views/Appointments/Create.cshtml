@@ -1,0 +1,75 @@
+﻿@model StoneClinic.Models.DB.Appointment
+
+@{
+    ViewData["Title"] = "Appointment";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+<h4>Schedule Appointment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" class="add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <select asp-for="PatientId" class="form-control" asp-items="ViewBag.PatientId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specialization" class="control-label"></label>
+                <select asp-for="Specialization" class="form-control">
+                    <option value="">Select</option>
+                    <option value="General">General</option>
+                    <option value="Internal Medicine">Internal Medicine</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                </select>
+                <span asp-validation-for="Specialization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor" class="control-label"></label>
+                <select asp-for="Doctor" class="form-control" asp-items="ViewBag.Doctor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitDate" class="control-label"></label>
+                <input asp-for="VisitDate" id="date_picker" type="date" class="form-control" />
+                <span asp-validation-for="VisitDate" class="text-danger"></span>
+            </div>
+            <script language="javascript">
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                var yyyy = today.getFullYear();
+
+                today = yyyy + '-' + mm + '-' + dd;
+                $('#date_picker').attr('min', today);
+            </script>
+
+            <div class="form-group">
+                <label asp-for="AppointmentTime" class="control-label"></label>
+                <select asp-for="AppointmentTime" class="form-control">
+                    <option value="">Select</option>
+                    <option value="9:00AM-10:00AM">9:00 AM-10:00 AM</option>
+                    <option value="10:00AM-11:00AM">10:00 AM-11:00 AM</option>
+                    <option value="11:00AM-12:00PM">11:00 AM-12:00 PM</option>
+                    <option value="12:00PM-1:00PM">12:00 PM-1:00 PM</option>
+                    <option value="1:00PM-2:00PM">1:00 PM-2:00 PM</option>
+                    <option value="2:00PM-3:00PM">2:00 PM-3:00 PM</option>
+                </select>
+                <span asp-validation-for="AppointmentTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Fix Appointent" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to Home</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

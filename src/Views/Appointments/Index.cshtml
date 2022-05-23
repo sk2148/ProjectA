@@ -1,0 +1,59 @@
+﻿@model IEnumerable<StoneClinic.Models.DB.Appointment>
+
+@{
+    ViewData["Title"] = "Appointment";
+}
+
+<h1>Appointments</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VisitDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorNavigation.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.PatientId)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.AppointmentId">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.AppointmentId">Details</a>|
+                <a asp-action="Delete" asp-route-id="@item.AppointmentId">Cancel</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
